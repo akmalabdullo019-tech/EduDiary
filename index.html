@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduDiary | Smart School Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-row">
+          <div class="brand-mark">E</div>
+          <div>
+            <p class="eyebrow">EduDiary</p>
+            <h2>School OS</h2>
+          </div>
+        </div>
+
+        <nav class="nav-menu">
+          <button class="nav-item active" data-section="dashboard">
+            <span>🏠</span> Boshqaruv paneli
+          </button>
+          <button class="nav-item" data-section="grades">
+            <span>🧾</span> Baholar
+          </button>
+          <button class="nav-item" data-section="timetable">
+            <span>📅</span> Jadvallar
+          </button>
+          <button class="nav-item" data-section="homework">
+            <span>📝</span> Uy vazifalari
+          </button>
+          <button class="nav-item" data-section="attendance">
+            <span>✅</span> Davomiylik
+          </button>
+          <button class="nav-item" data-section="messages">
+            <span>💬</span> Xabarlar
+          </button>
+          <button class="nav-item" data-section="announcements">
+            <span>📢</span> E’lonlar
+          </button>
+          <button class="nav-item" data-section="admin">
+            <span>⚙️</span> Admin
+          </button>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="small-label">Demo hisoblar</p>
+          <div class="demo-list">
+            <button class="demo-btn" data-role="student">Talaba</button>
+            <button class="demo-btn" data-role="teacher">O'qituvchi</button>
+            <button class="demo-btn" data-role="parent">Ota-ona</button>
+            <button class="demo-btn" data-role="admin">Administrator</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="topbar-title">
+            <h1 id="page-title">Boshqaruv paneli</h1>
+            <p id="page-subtitle">Bugungi faoliyat va umumiy ko'rsatkichlar</p>
+          </div>
+
+          <div class="topbar-actions">
+            <label class="search-box">
+              <span>🔎</span>
+              <input type="text" placeholder="Qidiruv..." />
+            </label>
+            <button class="ghost-btn" id="themeToggle">🌙</button>
+            <button class="notification-btn">🔔 <span class="dot"></span></button>
+            <div class="user-pill">
+              <div class="avatar">A</div>
+              <div>
+                <strong id="headerName">Aziza A.</strong>
+                <small id="headerRole">Talaba</small>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="panel-body" id="panelBody">
+          <section class="content-section active" id="dashboard-section">
+            <div class="hero-panel">
+              <div>
+                <span class="badge success">Live</span>
+                <h2 id="welcomeTitle">Salom, Aziza! Bugun ko’p maqsadga erishdingiz.</h2>
+                <p id="welcomeText">Bugungi dars jadvali, baholar va uy vazifalari zamonaviy nazorat panelida.</p>
+                <div class="hero-actions">
+                  <button class="primary-btn" data-section="grades">Baholarni ko’rish</button>
+                  <button class="secondary-btn" data-section="homework">Uy vazifalari</button>
+                </div>
+              </div>
+              <div class="student-summary-card">
+                <div class="mini-stat">
+                  <span>O’rtacha baho</span>
+                  <strong id="avgGrade">4.8</strong>
+                </div>
+                <div class="mini-stat">
+                  <span>Davomiylik</span>
+                  <strong id="attendanceStat">96%</strong>
+                </div>
+                <div class="mini-stat">
+                  <span>Topshirilmagan</span>
+                  <strong id="pendingHomework">3 ta</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats-grid" id="statsGrid"></div>
+
+            <div class="two-column-grid">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Bugungi darslar</h3>
+                  <button class="small-link">Barchasi</button>
+                </div>
+                <div id="todayLessons" class="lesson-list"></div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>Yaqin baholar</h3>
+                  <button class="small-link">Tarix</button>
+                </div>
+                <div id="recentGrades" class="grade-list"></div>
+              </div>
+            </div>
+
+            <div class="two-column-grid">
+              <div class="card chart-card">
+                <div class="card-header">
+                  <h3>Haftalik ko’rsatkich</h3>
+                  <span class="badge neutral">7 kun</span>
+                </div>
+                <div class="bar-chart" id="weeklyChart"></div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>So’ngi e’lonlar</h3>
+                  <button class="small-link">Barchasi</button>
+                </div>
+                <div id="announcementsList" class="news-list"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section" id="grades-section">
+            <div class="section-header">
+              <div>
+                <p class="small-label">Baholar</p>
+                <h2>Gradebook</h2>
+              </div>
+              <button class="primary-btn small-btn">Yangi baho</button>
+            </div>
+
+            <div class="filter-row">
+              <select>
+                <option>Barcha fanlar</option>
+                <option>Matematika</option>
+                <option>Fizika</option>
+                <option>Biologiya</option>
+              </select>
+              <select>
+                <option>Semestr</option>
+                <option>I semestr</option>
+                <option>II semestr</option>
+              </select>
+              <input type="text" placeholder="Talaba yoki fan nomi" />
+            </div>
+
+            <div class="card table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Fan</th>
+                    <th>O'qituvchi</th>
+                    <th>Bahosi</th>
+                    <th>Tur</th>
+                    <th>Sana</th>
+                    <th>Izoh</th>
+                  </tr>
+                </thead>
+                <tbody id="gradeTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section" id="timetable-section">
+            <div class="section-header">
+              <div>
+                <p class="small-label">Jadvallar</p>
+                <h2>Dars jadvali</h2>
+              </div>
+              <button class="primary-btn small-btn">Jadval qo'shish</button>
+            </div>
+            <div class="schedule-grid" id="timetableGrid"></div>
+          </section>
+
+          <section class="content-section" id="homework-section">
+            <div class="section-header">
+              <div>
+                <p class="small-label">Uy vazifalari</p>
+                <h2>Topshirishlar va vazifalar</h2>
+              </div>
+              <button class="primary-btn small-btn">Yangi vazifa</button>
+            </div>
+            <div id="homeworkList" class="todo-list"></div>
+          </section>
+
+          <section class="content-section" id="attendance-section">
+            <div class="section-header">
+              <div>
+                <p class="small-label">Davomiylik</p>
+                <h2>O’qish davri</h2>
+              </div>
+              <button class="primary-btn small-btn">Jadvalni ko'rish</button>
+            </div>
+            <div id="attendanceList" class="attendance-grid"></div>
+          </section>
+
+          <section class="content-section" id="messages-section">
+            <div class="section-header">
+              <div>
+                <p class="small-label">Xabarlar</p>
+                <h2>Chat va xabarlar</h2>
+              </div>
+            </div>
+            <div class="messages-layout">
+              <aside class="messages-panel" id="messagesSidebar"></aside>
+              <div class="chat-box" id="chatBox"></div>
+            </div>
+          </section>
+
+          <section class="content-section" id="announcements-section">
+            <div class="section-header">
+              <div>
+                <p class="small-label">E’lonlar</p>
+                <h2>Maktab yangiliklari</h2>
+              </div>
+              <button class="primary-btn small-btn">E’lon yarating</button>
+            </div>
+            <div id="fullAnnouncements" class="announcement-stack"></div>
+          </section>
+
+          <section class="content-section" id="admin-section">
+            <div class="section-header">
+              <div>
+                <p class="small-label">Admin paneli</p>
+                <h2>Maktab boshqaruvi</h2>
+              </div>
+              <button class="primary-btn small-btn">Foydalanuvchilar</button>
+            </div>
+            <div class="stats-grid" id="adminStats"></div>
+            <div class="card table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Foydalanuvchi</th>
+                    <th>Rol</th>
+                    <th>Status</th>
+                    <th>Oxirgi faoliyat</th>
+                  </tr>
+                </thead>
+                <tbody id="adminTable"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
